@@ -1,18 +1,16 @@
-from sklearn.linear_model import LogisticRegression
-from sklearn.svm import LinearSVC
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.pipeline import make_pipeline
-from sklearn.preprocessing import MaxAbsScaler
+import tensorflow as tf
+from tensorflow.keras import layers, Model
 
-def get_model(name):
-    if name == "logistic":
-        return LogisticRegression(max_iter=5000, solver="saga", multi_class="multinomial")
+def build_gru(vocab_size):
+    inputs = layers.Input(shape=(None,))
+    x = layers.Embedding(vocab_size, 128)(inputs)
+    x = layers.GRU(64)(x)
+    outputs = layers.Dense(3, activation="softmax")(x)
+    return Model(inputs, outputs)
 
-    elif name == "svm":
-        return make_pipeline(MaxAbsScaler(), LinearSVC(max_iter=10000))
-
-    elif name == "rf":
-        return RandomForestClassifier(n_estimators=100)
-
-    else:
-        raise ValueError(f"Model {name} not supported")
+def build_bilstm(vocab_size):
+    inputs = layers.Input(shape=(None,))
+    x = layers.Embedding(vocab_size, 128)(inputs)
+    x = layers.Bidirectional(layers.LSTM(64))(x)
+    outputs = layers.Dense(3, activation="softmax")(x)
+    return Model(inputs, outputs)
