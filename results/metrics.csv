@@ -1,1 +1,5 @@
-
+model,accuracy
+phobert,96.7
+random_forest,93.6
+svm,90.8
+logistic,89.8
