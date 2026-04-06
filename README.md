@@ -96,3 +96,22 @@ pip install -r requirements.txt
 
 ## ▶️ Run
 python app/app.py
+
+
+🔬 Reproducibility
+python src/train.py
+python src/evaluate.py
+
+
+📄 Paper
+
+See: reports/paper.pdf
+
+📌 Future Work
+Fine-tuning larger transformer models
+Multi-label sentiment analysis
+Real-time API deployment
+👨‍💻 Author
+
+Tran Minh Hau
+University of Information Technology – VNU-HCM
