@@ -1,1 +1,12 @@
-requirements.txt
+```txt
+tensorflow==2.17.1
+transformers==4.57.6
+datasets==2.19.1
+scikit-learn==1.5.2
+underthesea==9.2.11
+scikeras==0.13.0
+pandas
+numpy
+matplotlib
+seaborn
+gradio
