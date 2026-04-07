@@ -23,6 +23,17 @@ def main():
     X_text = df["text"].values
     y = df["sentiment"].values
 
+    # 🔬 Experiment: Class Imbalance Analysis
+    from collections import Counter
+    
+    class_distribution = Counter(y)
+    print("\n📊 Class Distribution:", class_distribution)
+    
+    # Insight:
+    # The dataset is highly imbalanced (Neutral class is extremely underrepresented ~4.3%)
+    # This imbalance can bias traditional models toward majority classes (Positive/Negative)
+    # and degrade Macro F1 performance despite high accuracy
+    
     vectorizer = build_bow(X_text)
     X = vectorizer.transform(X_text)
 
