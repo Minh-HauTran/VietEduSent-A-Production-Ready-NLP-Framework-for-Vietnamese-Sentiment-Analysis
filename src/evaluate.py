@@ -13,3 +13,21 @@ def compute_metrics(y_true, y_pred):
         "recall": recall,
         "f1": f1
     }
+    # 🔬 Robustness Evaluation: Noisy Vietnamese Text
+def evaluate_noisy_samples(model):
+    noisy_samples = [
+        "thầy dạy hay quáaaaa",
+        "ko hiểu bài luôn :((((",
+        "giảng viên rất tốt 👍👍",
+        "bài tập nhìu quáaaa",
+        "hok hiểu j hết trơn"
+    ]
+
+    print("\n🧪 Robustness Test (Noisy Inputs):")
+    for text in noisy_samples:
+        pred = model.predict([text])[0]
+        print(f"Input: {text} → Prediction: {pred}")
+
+    # Insight:
+    # Vietnamese user-generated text contains slang, emoji, and noise
+    # Robust preprocessing is critical for stable real-world performance
