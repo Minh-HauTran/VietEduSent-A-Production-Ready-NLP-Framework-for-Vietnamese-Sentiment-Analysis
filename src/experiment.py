@@ -27,3 +27,12 @@ def run_kfold(model, X, y, n_splits=5):
 
     print("\nAverage:", avg)
     return avg
+# 🔬 Experiment: Class Imbalance Analysis
+# Observation:
+# The UIT-VSFC dataset is highly imbalanced (Neutral class ~4.3%)
+# This leads to biased gradient updates when using standard CrossEntropy loss
+# The model tends to ignore the Neutral class to minimize global loss
+#
+# Hypothesis:
+# Applying class-balanced focal loss should force the model
+# to focus on minority samples and improve Macro F1 score
