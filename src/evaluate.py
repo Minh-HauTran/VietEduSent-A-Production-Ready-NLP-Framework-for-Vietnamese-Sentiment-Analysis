@@ -28,6 +28,12 @@ def evaluate_noisy_samples(model):
         pred = model.predict([text])[0]
         print(f"Input: {text} → Prediction: {pred}")
 
-    # Insight:
-    # Vietnamese user-generated text contains slang, emoji, and noise
-    # Robust preprocessing is critical for stable real-world performance
+        # Error Analysis
+        # Observation:
+        # Misclassifications often occur in:
+        # - Neutral vs Positive ambiguity
+        # - Sentences with mixed sentiment
+        #
+        # Insight:
+        # The model struggles with subtle polarity shifts,
+        # suggesting need for better context modeling
